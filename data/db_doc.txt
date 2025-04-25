@@ -1,0 +1,38 @@
+zhtest数据库文档
+
+1. 表 user
+表描述: 该表用于存储用户的信息。
+字段说明:
+    id: 用户的唯一标识符，主键。
+    username: 用户名。
+    password: 用户密码。
+    email: 用户邮箱。
+    icon: 用户头像。
+    coin_num: 用户硬币数量。
+    join_time: 用户加入时间。
+    admin: 是否为管理员，1表示是，0表示否。
+
+2. 表 user_region
+表描述: 该表用于存储用户的地理位置信息。
+字段说明:
+    id: 地理位置的唯一标识符，主键。
+    jing_du: 经度。
+    wei_du: 纬度。
+    province: 省份。
+    city: 城市。
+    district: 区。
+    name: 地点名称。
+    user_id: 关联的用户ID，外键关联 user 表的 id 字段。
+
+3. 表 article
+表描述: 该表用于存储文章的信息。
+字段说明:
+    id: 文章的唯一标识符，主键。
+    title: 文章标题。
+    content: 文章内容。
+    pdatetime: 文章发布时间。
+    user_id: 发布文章的用户ID，外键关联 user 表的 id 字段。
+    type_id: 文章类型ID，可能需要关联其他类型定义表。
+    click_num: 文章点击次数。
+    disagree: 文章反对次数。
+    pic: 文章配图链接。
