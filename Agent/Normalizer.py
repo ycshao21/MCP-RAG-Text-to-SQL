@@ -32,7 +32,7 @@ SYSTEM_PROMPT["Rewriter"][
 请勿添加或推断用户输入中未提供的信息。您的任务仅限于将输入改写为标准化的祈使句。
 """
 
-SYSTEM_PROMPT["rewriter"][
+SYSTEM_PROMPT["Rewriter"][
     "en"
 ] = """
 System Prompt:
@@ -74,10 +74,11 @@ class Normalizer:
         self.client = OpenAI(api_key=api_key, base_url=base_url)
 
         self.language = os.getenv("LANGUAGE", "en")
+        print(self.language)
 
         self.model = model
 
-    def rewrite(self, query: str) -> str:
+    def normalize(self, query: str) -> str:
         """
         将用户输入转化为标准的陈述句
 

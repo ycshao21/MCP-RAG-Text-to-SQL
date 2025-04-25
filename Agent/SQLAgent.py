@@ -1,6 +1,6 @@
 import os
 import json
-from BaseAgent import *
+from .BaseAgent import *
 
 
 SYSTEM_PROMPT = {"SQLAgent_generate": {}, "SQLAgent_adjust": {}}
@@ -27,7 +27,10 @@ You are an SQL adjustment expert designed for Text-to-SQL systems. Your task is 
 """
 
 
-USER_PROMPT = {}
+USER_PROMPT = {
+    "SQLAgent_generate": {},
+    "SQLAgent_adjust": {},
+}
 USER_PROMPT["SQLAgent_generate"][
     "cn"
 ] = """

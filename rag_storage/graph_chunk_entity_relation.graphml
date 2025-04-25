@@ -1,0 +1,260 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <key id="d9" for="edge" attr.name="file_path" attr.type="string" />
+  <key id="d8" for="edge" attr.name="source_id" attr.type="string" />
+  <key id="d7" for="edge" attr.name="keywords" attr.type="string" />
+  <key id="d6" for="edge" attr.name="description" attr.type="string" />
+  <key id="d5" for="edge" attr.name="weight" attr.type="double" />
+  <key id="d4" for="node" attr.name="file_path" attr.type="string" />
+  <key id="d3" for="node" attr.name="source_id" attr.type="string" />
+  <key id="d2" for="node" attr.name="description" attr.type="string" />
+  <key id="d1" for="node" attr.name="entity_type" attr.type="string" />
+  <key id="d0" for="node" attr.name="entity_id" attr.type="string" />
+  <graph edgedefault="undirected">
+    <node id="user">
+      <data key="d0">user</data>
+      <data key="d1">category</data>
+      <data key="d2">The 'user' table stores information about users, including their unique identifiers and personal details such as usernames, passwords, and email addresses.</data>
+      <data key="d3">chunk-b7884813f0866d70f32db1d199f28ff2</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="user_region">
+      <data key="d0">user_region</data>
+      <data key="d1">category</data>
+      <data key="d2">The 'user_region' table contains geographical location data for users, detailing their coordinates, province, city, district, and the associated user's ID.</data>
+      <data key="d3">chunk-b7884813f0866d70f32db1d199f28ff2</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="article">
+      <data key="d0">article</data>
+      <data key="d1">category</data>
+      <data key="d2">The 'article' table is designed to hold information about articles, including title, content, publication date, user ID of the author, and metrics like clicks and dissent counts.</data>
+      <data key="d3">chunk-b7884813f0866d70f32db1d199f28ff2</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="id">
+      <data key="d0">id</data>
+      <data key="d1">category</data>
+      <data key="d2">The 'id' field in various tables acts as a unique identifier and primary key for records, allowing for individual recognition of entries.</data>
+      <data key="d3">chunk-b7884813f0866d70f32db1d199f28ff2</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="username">
+      <data key="d0">username</data>
+      <data key="d1">category</data>
+      <data key="d2">The 'username' field represents the name chosen by the user for their account, serving as a public identifier.</data>
+      <data key="d3">chunk-b7884813f0866d70f32db1d199f28ff2</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="password">
+      <data key="d0">password</data>
+      <data key="d1">category</data>
+      <data key="d2">The 'password' field stores the user's secret access code for account protection and authentication.</data>
+      <data key="d3">chunk-b7884813f0866d70f32db1d199f28ff2</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="email">
+      <data key="d0">email</data>
+      <data key="d1">category</data>
+      <data key="d2">The 'email' field is provided by users for communication and account recovery purposes.</data>
+      <data key="d3">chunk-b7884813f0866d70f32db1d199f28ff2</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="icon">
+      <data key="d0">icon</data>
+      <data key="d1">category</data>
+      <data key="d2">The 'icon' field links to the user's profile picture, representing their visual identity on the platform.</data>
+      <data key="d3">chunk-b7884813f0866d70f32db1d199f28ff2</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="coin_num">
+      <data key="d0">coin_num</data>
+      <data key="d1">category</data>
+      <data key="d2">The 'coin_num' field indicates the amount of virtual currency the user possesses, which may be used for various transactions.</data>
+      <data key="d3">chunk-b7884813f0866d70f32db1d199f28ff2</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="join_time">
+      <data key="d0">join_time</data>
+      <data key="d1">category</data>
+      <data key="d2">The 'join_time' field captures the timestamp of when the user registered on the platform.</data>
+      <data key="d3">chunk-b7884813f0866d70f32db1d199f28ff2</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="admin">
+      <data key="d0">admin</data>
+      <data key="d1">category</data>
+      <data key="d2">The 'admin' field distinguishes users with administrative privileges from regular users, indicated by a binary value.</data>
+      <data key="d3">chunk-b7884813f0866d70f32db1d199f28ff2</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="jing_du">
+      <data key="d0">jing_du</data>
+      <data key="d1">category</data>
+      <data key="d2">The 'jing_du' field represents the longitudinal coordinate of a user's geographic location.</data>
+      <data key="d3">chunk-b7884813f0866d70f32db1d199f28ff2</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="wei_du">
+      <data key="d0">wei_du</data>
+      <data key="d1">category</data>
+      <data key="d2">The 'wei_du' field represents the latitudinal coordinate of a user's geographic location.</data>
+      <data key="d3">chunk-b7884813f0866d70f32db1d199f28ff2</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="province">
+      <data key="d0">province</data>
+      <data key="d1">category</data>
+      <data key="d2">The 'province' field indicates the administrative division of a user's location, providing regional context.</data>
+      <data key="d3">chunk-b7884813f0866d70f32db1d199f28ff2</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="city">
+      <data key="d0">city</data>
+      <data key="d1">category</data>
+      <data key="d2">The 'city' field specifies the urban locality of the user's residence.</data>
+      <data key="d3">chunk-b7884813f0866d70f32db1d199f28ff2</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="district">
+      <data key="d0">district</data>
+      <data key="d1">category</data>
+      <data key="d2">The 'district' field further refines the user's location down to a smaller administrative sector within the city.</data>
+      <data key="d3">chunk-b7884813f0866d70f32db1d199f28ff2</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="name">
+      <data key="d0">name</data>
+      <data key="d1">category</data>
+      <data key="d2">The 'name' field denotes the specific location name that is associated with a user's geographic data.</data>
+      <data key="d3">chunk-b7884813f0866d70f32db1d199f28ff2</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="user_id">
+      <data key="d0">user_id</data>
+      <data key="d1">category</data>
+      <data key="d2">The 'user_id' field serves as a foreign key that links geographic data back to the corresponding user in the 'user' table.</data>
+      <data key="d3">chunk-b7884813f0866d70f32db1d199f28ff2</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="title">
+      <data key="d0">title</data>
+      <data key="d1">category</data>
+      <data key="d2">The 'title' field is the headline or main name of an article, summarizing its content.</data>
+      <data key="d3">chunk-b7884813f0866d70f32db1d199f28ff2</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="content">
+      <data key="d0">content</data>
+      <data key="d1">category</data>
+      <data key="d2">The 'content' field contains the main body text or information of the article, detailing the subject matter.</data>
+      <data key="d3">chunk-b7884813f0866d70f32db1d199f28ff2</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="pdatetime">
+      <data key="d0">pdatetime</data>
+      <data key="d1">category</data>
+      <data key="d2">The 'pdatetime' field records the date and time when the article was published.</data>
+      <data key="d3">chunk-b7884813f0866d70f32db1d199f28ff2</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="type_id">
+      <data key="d0">type_id</data>
+      <data key="d1">category</data>
+      <data key="d2">The 'type_id' field categorizes articles based on predefined types or classifications.</data>
+      <data key="d3">chunk-b7884813f0866d70f32db1d199f28ff2</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="click_num">
+      <data key="d0">click_num</data>
+      <data key="d1">category</data>
+      <data key="d2">The 'click_num' field counts how many times the article has been viewed, indicating its popularity.</data>
+      <data key="d3">chunk-b7884813f0866d70f32db1d199f28ff2</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="disagree">
+      <data key="d0">disagree</data>
+      <data key="d1">category</data>
+      <data key="d2">The 'disagree' field tracks the number of times users have expressed disagreement with the article's content, reflecting its reception.</data>
+      <data key="d3">chunk-b7884813f0866d70f32db1d199f28ff2</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="pic">
+      <data key="d0">pic</data>
+      <data key="d1">category</data>
+      <data key="d2">The 'pic' field contains a link to an image associated with the article, enhancing its visual engagement.</data>
+      <data key="d3">chunk-b7884813f0866d70f32db1d199f28ff2</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <edge source="user" target="user_region">
+      <data key="d5">8.0</data>
+      <data key="d6">The 'user_region' table connects geographic information to specific users through the user ID foreign key.</data>
+      <data key="d7">data relationship, geographic association</data>
+      <data key="d8">chunk-b7884813f0866d70f32db1d199f28ff2</data>
+      <data key="d9">unknown_source</data>
+    </edge>
+    <edge source="user" target="article">
+      <data key="d5">18.0</data>
+      <data key="d6">The 'article' table links articles to users who authored them using the user ID foreign key.&lt;SEP&gt;The article is associated with a specific user who created it, thus establishing authorship.</data>
+      <data key="d7">authorship, content creation&lt;SEP&gt;authorship, content generation</data>
+      <data key="d8">chunk-b7884813f0866d70f32db1d199f28ff2</data>
+      <data key="d9">unknown_source</data>
+    </edge>
+    <edge source="user_region" target="jing_du">
+      <data key="d5">8.0</data>
+      <data key="d6">The 'jing_du' field provides the longitudinal data of the user's location within the 'user_region' table.</data>
+      <data key="d7">geographic data, location identification</data>
+      <data key="d8">chunk-b7884813f0866d70f32db1d199f28ff2</data>
+      <data key="d9">unknown_source</data>
+    </edge>
+    <edge source="user_region" target="wei_du">
+      <data key="d5">8.0</data>
+      <data key="d6">The 'wei_du' field provides the latitudinal data of the user's location within the 'user_region' table.</data>
+      <data key="d7">geographic data, location identification</data>
+      <data key="d8">chunk-b7884813f0866d70f32db1d199f28ff2</data>
+      <data key="d9">unknown_source</data>
+    </edge>
+    <edge source="user_region" target="province">
+      <data key="d5">7.0</data>
+      <data key="d6">The 'province' field helps categorize the user's geographic area within the 'user_region' table.</data>
+      <data key="d7">geographic classification, regional context</data>
+      <data key="d8">chunk-b7884813f0866d70f32db1d199f28ff2</data>
+      <data key="d9">unknown_source</data>
+    </edge>
+    <edge source="user_region" target="city">
+      <data key="d5">7.0</data>
+      <data key="d6">The 'city' field specifies the urban locale of the user, enhancing the geographic data's granularity.</data>
+      <data key="d7">geographic classification, urban context</data>
+      <data key="d8">chunk-b7884813f0866d70f32db1d199f28ff2</data>
+      <data key="d9">unknown_source</data>
+    </edge>
+    <edge source="user_region" target="district">
+      <data key="d5">7.0</data>
+      <data key="d6">The 'district' field further refines the user's location within the 'user_region' table, providing detailed geographic information.</data>
+      <data key="d7">geographic classification, administrative context</data>
+      <data key="d8">chunk-b7884813f0866d70f32db1d199f28ff2</data>
+      <data key="d9">unknown_source</data>
+    </edge>
+    <edge source="article" target="click_num">
+      <data key="d5">8.0</data>
+      <data key="d6">The 'click_num' field indicates user engagement with the article by tracking views.</data>
+      <data key="d7">engagement metrics, user interaction</data>
+      <data key="d8">chunk-b7884813f0866d70f32db1d199f28ff2</data>
+      <data key="d9">unknown_source</data>
+    </edge>
+    <edge source="article" target="disagree">
+      <data key="d5">7.0</data>
+      <data key="d6">The 'disagree' field shows how many users contested the article's content, reflecting reader reception.</data>
+      <data key="d7">content reception, user feedback</data>
+      <data key="d8">chunk-b7884813f0866d70f32db1d199f28ff2</data>
+      <data key="d9">unknown_source</data>
+    </edge>
+    <edge source="article" target="pdatetime">
+      <data key="d5">6.0</data>
+      <data key="d6">The 'pdatetime' field associates the article with its publication time, relevant for chronological context.</data>
+      <data key="d7">publication timing, content relevance</data>
+      <data key="d8">chunk-b7884813f0866d70f32db1d199f28ff2</data>
+      <data key="d9">unknown_source</data>
+    </edge>
+  </graph>
+</graphml>

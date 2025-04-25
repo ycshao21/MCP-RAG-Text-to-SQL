@@ -21,12 +21,12 @@ from typing import (
     Dict,
 )
 
-from lightrag.kg import (
+from .kg import (
     STORAGES,
     verify_storage_implementation,
 )
 
-from lightrag.kg.shared_storage import (
+from .kg.shared_storage import (
     get_namespace_data,
     get_pipeline_status_lock,
 )

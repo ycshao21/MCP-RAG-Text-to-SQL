@@ -1,18 +1,22 @@
 import os
 import asyncio
+import json
+import re
 
 from dotenv import load_dotenv
 
 from Agent.Normalizer import Normalizer
+from Agent.split_query import split_query
+from Agent.manage import TaskManager
 
-from LightRAG.lightrag import LightRAG, QueryParam
-from LightRAG.lightrag.llm.openai import (
+from lightrag.lightrag import LightRAG, QueryParam
+from lightrag.llm.openai import (
     gpt_4o_mini_complete,
     gpt_4o_complete,
     openai_embed,
 )
-from LightRAG.lightrag.kg.shared_storage import initialize_pipeline_status
-from LightRAG.lightrag.utils import setup_logger, TokenTracker
+from lightrag.kg.shared_storage import initialize_pipeline_status
+from lightrag.utils import setup_logger, TokenTracker
 
 setup_logger("lightrag", level="INFO")
 
@@ -25,6 +29,7 @@ class Text2SQL:
     def __init__(self):
         self.rag = None
         self.normalizer = None
+        self.task_manager = TaskManager()
 
     async def initialize(self):
         # Initialize RAG instance
@@ -37,7 +42,7 @@ class Text2SQL:
         await initialize_pipeline_status()
 
         # Load context file
-        context_file = "../data/db_doc.txt"
+        context_file = "./data/db_doc.txt"
         with open(context_file, "r", encoding="utf-8") as f:
             await self.rag.ainsert(f.read())
 
@@ -49,9 +54,9 @@ class Text2SQL:
             await self.rag.finalize_storages()
             self.rag = None
 
-    async def normalize_query(self, query: str):
+    def normalize_query(self, query: str):
         # Normalize the query using the rewriter
-        normalized_query = await self.normalizer.rewrite(query)
+        normalized_query = self.normalizer.normalize(query)
         return normalized_query
 
     async def retrive_context(
@@ -92,23 +97,36 @@ async def main():
     text2sql = Text2SQL()
     await text2sql.initialize()
 
-    user_query = "网站上有多少用户？"
-    # user_query = "网站上发表文章最多且点击量最高的用户硬币数是多少？"
+    # 读取 jsonl
+    with open("./data/queries.jsonl", "r", encoding="utf-8") as f:
+        queries = [json.loads(line) for line in f.readlines()]
 
-    normalized_query = text2sql.normalize_query(user_query)
+    query_idx = 2
+
+    query = queries[query_idx]
+    print(f"查询问题: {query['problem']}")
+
+    normalized_query = text2sql.normalize_query(query["problem"])
     print("Normalized query:", normalized_query)
 
     retrieval_mode = "hybrid"
-    context = text2sql.retrive_context(
-        user_query,
+    context = await text2sql.retrive_context(
+        normalized_query,
         retrieval_mode,
     )
     print("Retrieved context:", context)
 
-    # # Judge
-    # tasks = []
+    # Router
+    tasks = split_query(normalized_query, context)
+    tasks = re.sub(r"```json\s*(.*?)\s*```", r"\1", tasks, flags=re.DOTALL)
 
-    # task_manager.execute_tasks(tasks)
+    # print("Raw tasks:", tasks)
+
+    tasks = json.loads(tasks)
+    sql, result = await text2sql.task_manager.execute_tasks(tasks, query_idx)
+
+    print("Final SQL:", sql)
+    print("Final result:", result)
 
     await text2sql.cleanup()
 

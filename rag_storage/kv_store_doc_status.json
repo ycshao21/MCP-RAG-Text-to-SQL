@@ -1,0 +1,12 @@
+{
+  "doc-b7884813f0866d70f32db1d199f28ff2": {
+    "status": "processed",
+    "chunks_count": 1,
+    "content": "zhtest数据库文档\n\n1. 表 user\n表描述: 该表用于存储用户的信息。\n字段说明:\n    id: 用户的唯一标识符，主键。\n    username: 用户名。\n    password: 用户密码。\n    email: 用户邮箱。\n    icon: 用户头像。\n    coin_num: 用户硬币数量。\n    join_time: 用户加入时间。\n    admin: 是否为管理员，1表示是，0表示否。\n\n2. 表 user_region\n表描述: 该表用于存储用户的地理位置信息。\n字段说明:\n    id: 地理位置的唯一标识符，主键。\n    jing_du: 经度。\n    wei_du: 纬度。\n    province: 省份。\n    city: 城市。\n    district: 区。\n    name: 地点名称。\n    user_id: 关联的用户ID，外键关联 user 表的 id 字段。\n\n3. 表 article\n表描述: 该表用于存储文章的信息。\n字段说明:\n    id: 文章的唯一标识符，主键。\n    title: 文章标题。\n    content: 文章内容。\n    pdatetime: 文章发布时间。\n    user_id: 发布文章的用户ID，外键关联 user 表的 id 字段。\n    type_id: 文章类型ID，可能需要关联其他类型定义表。\n    click_num: 文章点击次数。\n    disagree: 文章反对次数。\n    pic: 文章配图链接。",
+    "content_summary": "zhtest数据库文档\n\n1. 表 user\n表描述: 该表用于存储用户的信息。\n字段说明:\n    id: 用户的唯一标识符，主键。\n    username: 用户名。\n    password: 用户密码。\n    email: 用户邮箱。\n    icon: 用户头像。\n    coin_num: 用户硬币数量。\n    join_time: 用户加入时间。\n    admin: 是否为管理员，1表示是，0表示否。\n\n2. 表 user_region\n表描述: 该表用于存储用户的地理位置...",
+    "content_length": 679,
+    "created_at": "2025-04-25T15:11:36.267637",
+    "updated_at": "2025-04-25T15:12:13.407598",
+    "file_path": "unknown_source"
+  }
+}
