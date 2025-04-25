@@ -22,15 +22,23 @@ class TaskManager:
         with open(save_path, "w", encoding="utf-8") as f:
             json.dump(tasks, f, ensure_ascii=False, indent=4)
 
-    async def execute_tasks(self, tasks: dict, query_idx=None):
+    async def execute_tasks(self, tasks: dict, context: str, query_idx=None):
         """执行所有任务并保存结果"""
-        for task_id, task_data in tasks.items():
-            description = task_data["description"]
+        descriptions = [task["description"] for task in tasks.values()]
+        sqls = []
+        for i, (task_id, _) in enumerate(tasks.items()):
+            description = descriptions[i]
             print(f"执行任务: {task_id} - {description}")
 
             # 第一次生成sql没有额外信息
-            sql = self.sql_agent.generate_sql(description, None)
+            sql = self.sql_agent.generate_sql(
+                descriptions=descriptions,
+                prev_sqls=sqls,
+                index=i,
+                context=context,
+            )
             tasks[task_id]["sql"] = sql
+            sqls.append(sql)
             print(f"对于任务 {description} 生成的SQL: {sql}")
 
             try:

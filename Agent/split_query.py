@@ -10,9 +10,10 @@ def split_query(query, entities=None):
     load_dotenv()
 
     client = OpenAI(
-        # api_key=os.getenv("DASHSCOPE_API_KEY"), base_url=os.getenv("DASHSCOPE_BASE_URL")
-        api_key=os.getenv("API_KEY"),
-        base_url=os.getenv("BASE_URL"),
+        api_key=os.getenv("DASHSCOPE_API_KEY"),
+        base_url=os.getenv("DASHSCOPE_BASE_URL"),
+        # api_key=os.getenv("API_KEY"),
+        # base_url=os.getenv("BASE_URL"),
     )
 
     reasoning_content = ""  # 记录完整思考
@@ -52,40 +53,40 @@ def split_query(query, entities=None):
     }}
     """
 
-    completion = client.chat.completions.create(
-        model="deepseek-v3-250324",
-        messages=[
-            {"role": "system", "content": system_prompt},
-            {"role": "user", "content": query},
-        ],
-    )
-
     # completion = client.chat.completions.create(
-    #     model="qwq-plus-latest",
+    #     model="deepseek-v3-250324",
     #     messages=[
     #         {"role": "system", "content": system_prompt},
     #         {"role": "user", "content": query},
     #     ],
-    #     stream=True,
     # )
 
-    answer_content = completion.choices[0].message.content
+    completion = client.chat.completions.create(
+        model="qwq-plus-latest",
+        messages=[
+            {"role": "system", "content": system_prompt},
+            {"role": "user", "content": query},
+        ],
+        stream=True,
+    )
 
-    # for chunk in completion:
-    #     if not chunk.choices:
-    #         print("\nUsage:")
-    #         print(chunk.usage)
-    #     else:
-    #         delta = chunk.choices[0].delta
-    #         if hasattr(delta, "reasoning_content") and delta.reasoning_content != None:
-    #             # print(delta.reasoning_content, end='', flush=True)
-    #             reasoning_content += delta.reasoning_content
-    #         else:
-    #             if delta.content != "" and is_answering is False:
-    #                 is_answering = True
+    # answer_content = completion.choices[0].message.content
 
-    #             # print(delta.content, end='', flush=True)
-    #             answer_content += delta.content
+    for chunk in completion:
+        if not chunk.choices:
+            print("\nUsage:")
+            print(chunk.usage)
+        else:
+            delta = chunk.choices[0].delta
+            if hasattr(delta, "reasoning_content") and delta.reasoning_content != None:
+                # print(delta.reasoning_content, end='', flush=True)
+                reasoning_content += delta.reasoning_content
+            else:
+                if delta.content != "" and is_answering is False:
+                    is_answering = True
+
+                # print(delta.content, end='', flush=True)
+                answer_content += delta.content
 
     return answer_content
 

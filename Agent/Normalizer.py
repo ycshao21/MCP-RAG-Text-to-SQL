@@ -74,7 +74,6 @@ class Normalizer:
         self.client = OpenAI(api_key=api_key, base_url=base_url)
 
         self.language = os.getenv("LANGUAGE", "en")
-        print(self.language)
 
         self.model = model
 

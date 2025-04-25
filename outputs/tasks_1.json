@@ -1,7 +1,0 @@
-{
-    "task1": {
-        "description": "Count the number of users who have administrative privileges (admin = 1).",
-        "sql": "SELECT COUNT(*) FROM users WHERE admin = 1;",
-        "result": "3\nMatch: True\nCheck completed: True\nAdjustment: None"
-    }
-}

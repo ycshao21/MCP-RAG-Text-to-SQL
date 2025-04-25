@@ -1,7 +1,0 @@
-{
-    "task1": {
-        "description": "Retrieve all articles published by user ID 10, including their titles, content, publication times, and click counts.",
-        "sql": "SELECT title, content, publication_time, click_count FROM articles WHERE user_id = 10 ORDER BY publication_time DESC;",
-        "result": ""
-    }
-}

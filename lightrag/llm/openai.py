@@ -150,8 +150,6 @@ async def openai_complete_if_cache(
     # Extract client configuration options
     client_configs = kwargs.pop("openai_client_configs", {})
 
-    print(f"base_url: {base_url}")
-
     # Create the OpenAI client
     openai_async_client = create_openai_async_client(
         api_key=api_key, base_url=base_url, client_configs=client_configs

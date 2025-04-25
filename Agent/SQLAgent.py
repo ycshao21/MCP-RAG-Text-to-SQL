@@ -29,12 +29,24 @@ You are an SQL adjustment expert designed for Text-to-SQL systems. Your task is 
 
 USER_PROMPT = {
     "SQLAgent_generate": {},
+    "SQLAgent_generate_multi": {},
     "SQLAgent_adjust": {},
 }
 USER_PROMPT["SQLAgent_generate"][
     "cn"
 ] = """
 请为以下任务生成 SQL 查询：
+任务描述：{description}
+上下文信息：{info}
+输出要求：仅返回纯 SQL 语句，不包含任何注释、说明或格式化内容。
+"""
+
+USER_PROMPT["SQLAgent_generate_multi"][
+    "cn"
+] = """
+前面已经完成了这些任务：{prev_description}
+对应的SQL语句为：{prev_sqls}
+请你参考已有的任务和SQL语句，为以下任务生成 SQL 查询：
 任务描述：{description}
 上下文信息：{info}
 输出要求：仅返回纯 SQL 语句，不包含任何注释、说明或格式化内容。
@@ -78,7 +90,7 @@ class SQLAgent:
 
         self.language = os.getenv("LANGUAGE", "en")
 
-    def generate_sql(self, description, info) -> str:
+    def generate_sql(self, descriptions: list, prev_sqls: list, index: int, context) -> str:
         """
         function:
             Receive a string containing a task description and generate the corresponding SQL;
@@ -87,12 +99,20 @@ class SQLAgent:
         return:
             str: SQL
         """
-
         system_prompt = SYSTEM_PROMPT["SQLAgent_generate"][self.language]
-        user_message = USER_PROMPT["SQLAgent_generate"][self.language].format(
-            description=description,
-            info=info,
-        )
+
+        if index == 0:
+            user_message = USER_PROMPT["SQLAgent_generate"][self.language].format(
+                description=descriptions[0],
+                info=context,
+            )
+        else:
+            user_message = USER_PROMPT["SQLAgent_generate_multi"][self.language].format(
+                prev_description="\n".join(descriptions[:index]),
+                prev_sqls="\n".join(prev_sqls),
+                description=descriptions[index],
+                info=context,
+            )
 
         response = self.client.chat.completions.create(
             model=self.model,
@@ -158,7 +178,7 @@ class SQLAgent:
 if __name__ == "__main__":
     sql = SQLAgent()
 
-    sql.generate_sql(description="查询用户yqxv2的邮箱", info="数据库中的用户表名为user")
+    sql.generate_sql(description="查询用户yqxv2的邮箱", context="数据库中的用户表名为user")
 
     sql.adjust_sql(
         sql="SELECT * FROM users WHERE username = 'yqxv2'",

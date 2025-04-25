@@ -42,9 +42,15 @@ class Text2SQL:
         await initialize_pipeline_status()
 
         # Load context file
-        context_file = "./data/db_doc.txt"
-        with open(context_file, "r", encoding="utf-8") as f:
-            await self.rag.ainsert(f.read())
+        context_files = [
+            "./data/ecommerce_doc.txt",
+            "./data/users.csv",
+            "./data/products.csv",
+            "./data/orders.csv",
+        ]
+        for context_file in context_files:
+            with open(context_file, "r", encoding="utf-8") as f:
+                await self.rag.ainsert(f.read())
 
         # Initialize rewriter
         self.normalizer = Normalizer()
@@ -91,7 +97,7 @@ class Text2SQL:
         return context
 
 
-async def main():
+async def main(query_idx):
     load_dotenv()
 
     text2sql = Text2SQL()
@@ -100,8 +106,6 @@ async def main():
     # 读取 jsonl
     with open("./data/queries.jsonl", "r", encoding="utf-8") as f:
         queries = [json.loads(line) for line in f.readlines()]
-
-    query_idx = 2
 
     query = queries[query_idx]
     print(f"查询问题: {query['problem']}")
@@ -123,7 +127,7 @@ async def main():
     # print("Raw tasks:", tasks)
 
     tasks = json.loads(tasks)
-    sql, result = await text2sql.task_manager.execute_tasks(tasks, query_idx)
+    sql, result = await text2sql.task_manager.execute_tasks(tasks, context, query_idx)
 
     print("Final SQL:", sql)
     print("Final result:", result)
@@ -132,4 +136,5 @@ async def main():
 
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    query_idx = 14
+    asyncio.run(main(query_idx))
